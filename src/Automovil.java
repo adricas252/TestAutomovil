@@ -1,4 +1,5 @@
 public class Automovil {
+
     private String marca, modelo;
     private int anio;
 
