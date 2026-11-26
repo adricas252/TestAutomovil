@@ -1,13 +1,60 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+public class Automovil {
+    private String marca, modelo;
+    private int anio;
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+    public static final int ANIO_PRIMER_AUTOMOVIL = 1886;
+
+    public Automovil(String marca, String modelo, int anio) {
+        setMarca(marca);
+        setModelo(modelo);
+        setAnio(anio);
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        if(marca == null || marca.trim().isEmpty()){
+            throw new IllegalArgumentException("La marca no puede ser nula ni vacía");
+        }
+        this.marca = marca;
+    }
+
+    public String getModelo() {
+        if(modelo == null || modelo.trim().isEmpty()){
+            throw new IllegalArgumentException("El modelo no puede ser nulo ni vacío");
+        }
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        if (anio < ANIO_PRIMER_AUTOMOVIL){
+            throw new IllegalArgumentException("En ese año no había coches");
+        }
+        this.anio = anio;
+    }
+
+    @Override
+    public String toString() {
+        return "Automovil{" +
+                "marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", anio=" + anio +
+                '}';
+    }
+
+    public void mostrarInformacion() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Año: " + anio);
+    }
 }
